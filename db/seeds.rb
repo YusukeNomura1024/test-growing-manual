@@ -5,3 +5,24 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+User.create!(
+  full_name: 'testtest',
+  phone_number: '99999',
+  email: 'test@test.com',
+  password: 'testtest',
+)
+
+10.times do |number|
+    Category.create!(user_id: 1, name: "カテゴリーサンプル#{number}")
+  end
+
+Manual.create!(
+  user_id: '1',
+  title: 'アプリケーションの作り方',
+  description: '説明文',
+  category_id: '1',
+
+
+  )
+

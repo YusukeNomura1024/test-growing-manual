@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  manual: one
+  title: MyString
+  order_number: 1
+  description: MyText
+
+two:
+  manual: two
+  title: MyString
+  order_number: 1
+  description: MyText

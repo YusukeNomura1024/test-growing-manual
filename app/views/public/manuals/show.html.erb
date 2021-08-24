@@ -1,0 +1,38 @@
+<% if flash[:notice] %>
+  <p id="notice">
+    <%= flash[:notice] %>
+    <%= "続けて、プロセスを登録してください" %>
+  </p>
+<% end %>
+<div>
+<%= 'マニュアルタイトル' + @manual.title %>
+</div>
+<div>
+<%= '説明' + @manual.description %>
+</div>
+<div>
+<%= 'カテゴリ' + @manual.category.name %>
+</div>
+
+<h3>手順</h3>
+<ul id="sortable_list">
+<% @procedures.each do |procedure| %>
+  <li>
+    <%= procedure.position %>
+    <%= procedure.title %>
+  </li>
+<% end %>
+</ul>
+
+<%= form_with(model: [@manual, @manual.procedures.build], local: true) do |f| %>
+<div class="form-group">
+  <%= f.number_field :position, min: 1 %>
+</div>
+<div class="form-group">
+  <%= f.text_field :title %>
+</div>
+<div class="form-group">
+  <%= f.submit '登録' %>
+</div>
+
+<% end %>
