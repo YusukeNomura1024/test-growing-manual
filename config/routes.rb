@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     resources :manuals do
       resources :procedures
     end
+    resources :memos
   end
 
 end

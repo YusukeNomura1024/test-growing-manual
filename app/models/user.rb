@@ -6,4 +6,6 @@ class User < ApplicationRecord
 
   has_many :manuals, dependent: :destroy
   has_many :categories, dependent: :destroy
+  has_many :memos, dependent: :destroy
+  has_many :method_categories, dependent: :destroy
 end

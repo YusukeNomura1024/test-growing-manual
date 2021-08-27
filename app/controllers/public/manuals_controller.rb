@@ -24,7 +24,7 @@ class Public::ManualsController < ApplicationController
     manual = Manual.new(manual_params)
     manual.user_id = current_user.id
     manual.save
-    flash[:notice] = '登録しました'
+    flash[:notice] = '登録しました。続けて、プロセスを登録してください'
     redirect_to manual_path(manual)
   end
 

@@ -8,11 +8,18 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-<% if user_signed_in? %>
-current_user.idは <%= current_user.id %>です<br>
-current_userは <%= current_user.full_name %>です<br>
-<% end %>
+
   <body>
+    <%= javascript_pack_tag 'custom_vue' %>
+    <%= stylesheet_pack_tag 'custom_vue' %>
+    <% if user_signed_in? %>
+    ログイン中です。
+      <% end %>
+
+    <div id='hello'>
+      {{message}}
+    </div>
+
     <%= yield %>
   </body>
 </html>

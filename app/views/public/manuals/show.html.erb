@@ -1,7 +1,6 @@
 <% if flash[:notice] %>
   <p id="notice">
     <%= flash[:notice] %>
-    <%= "続けて、プロセスを登録してください" %>
   </p>
 <% end %>
 <div>
@@ -24,15 +23,21 @@
 <% end %>
 </ul>
 
-<%= form_with(model: [@manual, @manual.procedures.build], local: true) do |f| %>
-<div class="form-group">
-  <%= f.number_field :position, min: 1 %>
-</div>
-<div class="form-group">
-  <%= f.text_field :title %>
-</div>
-<div class="form-group">
-  <%= f.submit '登録' %>
-</div>
+<div id="procedureEntry">
+  <%= form_with(model: [@manual, @manual.procedures.build], local: true) do |f| %>
+  <div class="form-group">
+    <input min="1" placeholder="順番を指定" type="number" name="procedure[position]" id="procedure_position"　v-bind:value="position">
+  </div>
+  <div class="form-group">
+    <input placeholder="手順内容を登録" type="text" name="procedure[title]" id="procedure_title" v-bind:value="title" v-on:input="title = $event.target.value">
+  </div>
 
-<% end %>
+
+  <div class="form-group">
+    <p v-show="titleBlanck">手順内容が空のままでは登録できません</p>
+    <input type="submit" name="commit" value="登録" data-disable-with="登録" v-bind:disabled="titleBlanck">
+  </div>
+
+  <% end %>
+</div>
+<%= link_to '手順に備忘録を登録する', manual_procedures_path(@manual) %>

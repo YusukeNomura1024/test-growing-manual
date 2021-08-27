@@ -9,6 +9,13 @@ class Public::ProceduresController < ApplicationController
     redirect_to manual_path(params[:manual_id])
   end
 
+
+  def index
+    @manual = Manual.find(params[:manual_id])
+    @procedures = Procedure.where(manual_id: params[:manual_id]).order(:position)
+    @memos = Memo.where(user_id: current_user.id)
+  end
+
   private
 
   def procedure_params

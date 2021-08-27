@@ -8,7 +8,19 @@ document.addEventListener('DOMContentLoaded', () => {
       message: "Can you say hello?"
     },
     components: { App }
+  });
+  const procedureEntry = new Vue({
+    el: '#procedureEntry',
+    data: {
+      position: '',
+      title: ''
+    },
+    computed: {
+      titleBlanck: function(){
+        return this.title == ''
+      }
+    }
   })
-})
 
+})
 

@@ -1,0 +1,33 @@
+ここに手順一覧を表示させて、備忘録を登録できるようにします。
+<div>
+<%= 'マニュアルタイトル' + @manual.title %>
+</div>
+<div>
+<%= '説明' + @manual.description %>
+</div>
+<div>
+<%= 'カテゴリ' + @manual.category.name %>
+</div>
+
+<h3>手順</h3>
+<div class="tab-group d-flex">
+<ul class="tab-list" style="list-style: none;">
+<% @procedures.each do |procedure| %>
+  <li class="tab" href="<%= '#' + 'tab' + procedure.id.to_s %>">
+      <%= procedure.position %>
+      <%= procedure.title %>
+  </li>
+<% end %>
+</ul>
+
+
+
+<ul class="tab-list" style="list-style: none;">
+<% @procedures.each do |procedure| %>
+  <li class="tabbox" id="<%= 'tab' + procedure.id.to_s %>">
+    <%= render 'public/memos/list', memos: @memos %>
+  </li>
+<% end %>
+</ul>
+</div>
+

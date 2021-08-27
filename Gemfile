@@ -64,3 +64,5 @@ gem "refile", require: "refile/rails", github: 'manfe/refile'
 gem "refile-mini_magick"
 gem 'devise'
 gem 'acts_as_list'
+gem "webpacker", "~> 4.x"
+gem "jquery-rails"

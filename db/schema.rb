@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_23_233227) do
+ActiveRecord::Schema.define(version: 2021_08_27_103545) do
 
   create_table "categories", force: :cascade do |t|
     t.string "name", null: false
@@ -31,6 +31,26 @@ ActiveRecord::Schema.define(version: 2021_08_23_233227) do
     t.datetime "updated_at", null: false
     t.index ["category_id"], name: "index_manuals_on_category_id"
     t.index ["user_id"], name: "index_manuals_on_user_id"
+  end
+
+  create_table "memos", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "method_category_id"
+    t.string "title", null: false
+    t.text "description"
+    t.text "code"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["method_category_id"], name: "index_memos_on_method_category_id"
+    t.index ["user_id"], name: "index_memos_on_user_id"
+  end
+
+  create_table "method_categories", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_method_categories_on_user_id"
   end
 
   create_table "procedures", force: :cascade do |t|
